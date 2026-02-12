@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-02-11T13:22:59.073653+05:30",
+  "data": [
+    {
+      "name": "Bob Johnson",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 57,
+      "sub_days_left": 0,
+      "archived": true,
+      "last_checkin": "2025-12-15T14:45:00+05:30",
+      "sub_end": "2025-12-31T05:30:00+05:30"
+    },
+    {
+      "name": "Jane Smith",
+      "status": "\u23f0 Expiring Soon",
+      "days_since_checkin": 21,
+      "sub_days_left": 3,
+      "archived": false,
+      "last_checkin": "2026-01-20T20:15:00+05:30",
+      "sub_end": "2026-02-15T05:30:00+05:30"
+    },
+    {
+      "name": "John Doe",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 2,
+      "sub_days_left": 17,
+      "archived": false,
+      "last_checkin": "2026-02-08T16:00:00+05:30",
+      "sub_end": "2026-03-01T05:30:00+05:30"
+    },
+    {
+      "name": "Alice Brown",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 0,
+      "sub_days_left": 109,
+      "archived": false,
+      "last_checkin": "2026-02-10T21:50:00+05:30",
+      "sub_end": "2026-06-01T05:30:00+05:30"
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "active": 2,
+    "at_risk": 0,
+    "ghosting": 0,
+    "expiring": 1,
+    "archived": 1
+  }
+}

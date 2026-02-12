@@ -334,3 +334,102 @@ async function serveStatic(path, corsHeaders, contentType = 'text/html') {
         headers: corsHeaders 
     });
 }
+
+// Serve Kanban dashboard
+async function serveKanban(corsHeaders) {
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriCepss AI Squad - Kanban</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0f0f1a; --card: #16213e; --text: #eaeaea; --accent: #6366f1; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { font-size: 2rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .grid { display: grid; grid-template-columns: 250px 1fr 300px; gap: 20px; }
+        .sidebar, .chat { background: #1a1a2e; border-radius: 12px; padding: 20px; }
+        .agent { display: flex; align-items: center; gap: 10px; padding: 12px; margin-bottom: 10px; background: var(--card); border-radius: 8px; cursor: pointer; }
+        .agent:hover { border: 1px solid var(--accent); }
+        .avatar { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .board { display: flex; gap: 15px; overflow-x: auto; }
+        .column { min-width: 250px; background: #1a1a2e; border-radius: 12px; padding: 15px; }
+        .column h3 { margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; }
+        .task { background: var(--card); padding: 15px; border-radius: 8px; margin-bottom: 10px; cursor: grab; }
+        .task:hover { border: 1px solid var(--accent); }
+        .priority { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; margin-bottom: 8px; }
+        .urgent { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .high { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .btn { padding: 10px 20px; background: var(--accent); border: none; border-radius: 6px; color: white; cursor: pointer; width: 100%; margin-top: 10px; }
+        @media (max-width: 1200px) { .grid { grid-template-columns: 1fr; } .sidebar, .chat { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤌 Friday Command Center</h1>
+            <p>NutriCepss AI Squad Dashboard</p>
+        </header>
+        <div class="grid">
+            <div class="sidebar">
+                <h2>🎮 AI Squad</h2>
+                <div class="agent"><div class="avatar" style="background:#f59e0b20;border:1px solid #f59e0b">🤌</div><div><div>Friday</div><small>Manager</small></div></div>
+                <div class="agent"><div class="avatar" style="background:#ec489920;border:1px solid #ec4899">📝</div><div><div>Writinator</div><small>Content</small></div></div>
+                <div class="agent"><div class="avatar" style="background:#3b82f620;border:1px solid #3b82f6">🔍</div><div><div>Detective</div><small>Research</small></div></div>
+                <div class="agent"><div class="avatar" style="background:#10b98120;border:1px solid #10b981">📊</div><div><div>Coach Cory</div><small>HubFit</small></div></div>
+                <div class="agent"><div class="avatar" style="background:#8b5cf620;border:1px solid #8b5cf6">📈</div><div><div>SEO Steve</div><small>Growth</small></div></div>
+                <div class="agent"><div class="avatar" style="background:#14b8a620;border:1px solid #14b8a6">🥷</div><div><div>Code Ninja</div><small>Dev</small></div></div>
+                <div class="agent"><div class="avatar" style="background:#f43f5e20;border:1px solid #f43f5e">👑</div><div><div>PR Princess</div><small>Marketing</small></div></div>
+                <button class="btn">+ New Task</button>
+            </div>
+            <div>
+                <h2 style="margin-bottom:20px">📋 Task Board</h2>
+                <div class="board">
+                    <div class="column">
+                        <h3>📥 Backlog</h3>
+                        <div class="task"><span class="priority high">HIGH</span><div>Create UGC ad concepts</div><small>👑 PR Princess • Tomorrow</small></div>
+                    </div>
+                    <div class="column">
+                        <h3>📝 To Do</h3>
+                        <div class="task"><span class="priority urgent">URGENT</span><div>Find 5 Reddit opportunities</div><small>🔍 Detective • 4 PM</small></div>
+                        <div class="task"><span class="priority high">HIGH</span><div>Create protein myths reel</div><small>📝 Writinator • 6 PM</small></div>
+                    </div>
+                    <div class="column">
+                        <h3>🔄 In Progress</h3>
+                        <div class="task"><span class="priority normal">NORMAL</span><div>Update Shopify theme</div><small>🥷 Code Ninja • This week</small></div>
+                    </div>
+                    <div class="column">
+                        <h3>👀 Review</h3>
+                        <div class="task"><span class="priority urgent">URGENT</span><div>HubFit ghosting analysis</div><small>📊 Coach Cory • Done</small></div>
+                    </div>
+                    <div class="column">
+                        <h3>✅ Done</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="chat">
+                <h2>💬 Squad Chat</h2>
+                <div style="margin:15px 0; font-size:0.85rem; line-height:1.6">
+                    <p style="margin-bottom:10px"><strong>🤌 Friday:</strong> Ready to crush some tasks? ☕</p>
+                    <p style="margin-bottom:10px"><strong>📝 Writinator:</strong> Always ready to make things VIRAL! 🔥</p>
+                    <p style="margin-bottom:10px"><strong>🔍 Detective:</strong> Hmm, interesting data patterns... 🕵️</p>
+                    <p><strong>📊 Coach Cory:</strong> We need to talk about ghosting clients...</p>
+                </div>
+                <input type="text" placeholder="Type message..." style="width:100%;padding:10px;background:var(--card);border:1px solid #2a2a3e;border-radius:6px;color:white;margin-top:10px">
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
+    
+    return new Response(html, {
+        headers: {
+            ...corsHeaders,
+            'Content-Type': 'text/html'
+        }
+    });
+}

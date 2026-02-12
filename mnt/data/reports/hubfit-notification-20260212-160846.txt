@@ -1,0 +1,11 @@
+📊 HubFit Status Update
+
+Clients:  total
+✅ Active:  clients
+⚠️ Urgent:  clients ghosting >14 days
+
+Full report: hubfit-summary-20260212-160846.md
+Summary: hubfit-quick-2026-02-12-1608.md
+[1;33m[skill_hubfit][0m 16:08:47 Latest report: hubfit-quick-2026-02-12-1608.md
+
+Action needed: Follow up with long-term ghosting clients.

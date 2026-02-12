@@ -1,0 +1,499 @@
+{
+  "timestamp": "2026-02-11T13:28:17.044798+05:30",
+  "data": [
+    {
+      "name": "Kartikey Dixit",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": true,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Saket Kasrekar",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": true,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Deepika Kumari",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": true,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Ambika Goel",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": true,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Sanjivika Pani",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 225,
+      "sub_days_left": 0,
+      "archived": true,
+      "last_checkin": "2025-07-01T08:50:01.783000+05:30",
+      "sub_end": "2025-07-13T00:00:00+05:30"
+    },
+    {
+      "name": "Himanshu Sharma",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 205,
+      "sub_days_left": null,
+      "archived": true,
+      "last_checkin": "2025-07-21T11:30:52.430000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Avik Mallick",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 147,
+      "sub_days_left": null,
+      "archived": true,
+      "last_checkin": "2025-09-17T10:29:57.588000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Prateek Sharma",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 133,
+      "sub_days_left": 0,
+      "archived": true,
+      "last_checkin": "2025-10-01T10:02:24.568000+05:30",
+      "sub_end": "2025-12-21T00:00:00+05:30"
+    },
+    {
+      "name": "Hereiz Likith",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 113,
+      "sub_days_left": null,
+      "archived": true,
+      "last_checkin": "2025-10-20T20:21:23.250000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Sowndarya Krishnan N",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 98,
+      "sub_days_left": 0,
+      "archived": true,
+      "last_checkin": "2025-11-05T05:48:23.505000+05:30",
+      "sub_end": "2025-12-21T00:00:00+05:30"
+    },
+    {
+      "name": "Prateek Konnur",
+      "status": "\ud83d\udca4 Archived",
+      "days_since_checkin": 96,
+      "sub_days_left": 24,
+      "archived": true,
+      "last_checkin": "2025-11-06T21:32:26.212000+05:30",
+      "sub_end": "2026-03-08T00:00:00+05:30"
+    },
+    {
+      "name": "Apurv Agnihotri",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Pranjali Agnihotri",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Anita Singh",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Naveen Kumar",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Some Sankar Roy",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Pramod Kumar",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Rishabh Verma",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Aakash Garg",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Sweta Khandelwal",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Shashank Rasavaraju",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": null,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": null,
+      "sub_end": null
+    },
+    {
+      "name": "Hassan Shariq",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 159,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2025-09-04T14:39:11.236000+05:30",
+      "sub_end": "2025-09-28T00:00:00+05:30"
+    },
+    {
+      "name": "Ridhi Moza",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 136,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-09-28T10:53:00.829000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Himanshu Sharma",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 133,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-10-01T00:42:44.031000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Kriti Luked",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 130,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-10-04T10:11:53.177000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Shrey Prashar",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 111,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-10-22T17:06:02.538000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Sainikhil Nathi",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 110,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2025-10-23T23:19:06.621000+05:30",
+      "sub_end": "2025-09-28T00:00:00+05:30"
+    },
+    {
+      "name": "Aditya Thanvi",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 103,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2025-10-31T10:54:46.798000+05:30",
+      "sub_end": "2026-02-01T05:30:00+05:30"
+    },
+    {
+      "name": "Darsh Jain",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 96,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2025-11-07T09:00:52.378000+05:30",
+      "sub_end": "2026-01-19T00:00:00+05:30"
+    },
+    {
+      "name": "Sathwik Parthi",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 95,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-11-08T10:29:47.541000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Shivam Singh",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 88,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-11-14T16:36:33.678000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Vatsal Patel",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 84,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-11-19T11:14:52.250000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Lekshmi S",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 83,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2025-11-20T09:33:15.823000+05:30",
+      "sub_end": "2026-01-19T00:00:00+05:30"
+    },
+    {
+      "name": "Aditi Jha",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 65,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2025-12-08T00:10:16.619000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Aditya Menon",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 55,
+      "sub_days_left": 24,
+      "archived": false,
+      "last_checkin": "2025-12-17T15:03:51.833000+05:30",
+      "sub_end": "2026-03-08T00:00:00+05:30"
+    },
+    {
+      "name": "Adrian Gianchand",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 46,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2025-12-26T23:35:20.555000+05:30",
+      "sub_end": "2025-12-08T00:00:00+05:30"
+    },
+    {
+      "name": "Maadhur Kapoor",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 35,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2026-01-07T09:05:16.802000+05:30",
+      "sub_end": "2025-07-06T00:00:00+05:30"
+    },
+    {
+      "name": "Vaishnavi Pamulapati",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 28,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2026-01-14T03:23:52.352000+05:30",
+      "sub_end": "2025-11-30T00:00:00+05:30"
+    },
+    {
+      "name": "Nita Ambedkar",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 28,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2026-01-13T17:15:25.031000+05:30",
+      "sub_end": "2026-01-18T00:00:00+05:30"
+    },
+    {
+      "name": "Inder Swami",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 21,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2026-01-21T08:51:55.227000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Swapnika Medikonda",
+      "status": "\ud83d\udd34 Ghosting",
+      "days_since_checkin": 8,
+      "sub_days_left": 52,
+      "archived": false,
+      "last_checkin": "2026-02-03T05:07:46.527000+05:30",
+      "sub_end": "2026-04-05T05:30:00+05:30"
+    },
+    {
+      "name": "Moulima Das",
+      "status": "\ud83d\udfe1 At Risk",
+      "days_since_checkin": 6,
+      "sub_days_left": 148,
+      "archived": false,
+      "last_checkin": "2026-02-04T16:23:00.224000+05:30",
+      "sub_end": "2026-07-10T05:30:00+05:30"
+    },
+    {
+      "name": "Udit Saxena",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 3,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2026-02-08T08:54:55.255000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Aditi Bathwal",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 2,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2026-02-09T10:27:43.960000+05:30",
+      "sub_end": "2026-02-08T00:00:00+05:30"
+    },
+    {
+      "name": "Mahendra Reddy",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 1,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2026-02-10T12:56:37.206000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Apurv Jain",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 1,
+      "sub_days_left": 0,
+      "archived": false,
+      "last_checkin": "2026-02-10T09:33:12.747000+05:30",
+      "sub_end": "2026-02-07T05:30:00+05:30"
+    },
+    {
+      "name": "Sweta Sen",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 1,
+      "sub_days_left": 178,
+      "archived": false,
+      "last_checkin": "2026-02-10T07:31:11.597000+05:30",
+      "sub_end": "2026-08-09T00:00:00+05:30"
+    },
+    {
+      "name": "Khushi Jain",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 1,
+      "sub_days_left": 138,
+      "archived": false,
+      "last_checkin": "2026-02-09T21:27:13.995000+05:30",
+      "sub_end": "2026-06-30T05:30:00+05:30"
+    },
+    {
+      "name": "Shivangi Bhaskar",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 0,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2026-02-11T07:59:12.493000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Nithya",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 0,
+      "sub_days_left": 157,
+      "archived": false,
+      "last_checkin": "2026-02-11T07:53:39.943000+05:30",
+      "sub_end": "2026-07-19T00:00:00+05:30"
+    },
+    {
+      "name": "Manuj Singh",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 0,
+      "sub_days_left": 157,
+      "archived": false,
+      "last_checkin": "2026-02-10T20:39:35.738000+05:30",
+      "sub_end": "2026-07-19T00:00:00+05:30"
+    },
+    {
+      "name": "Rajani Rao",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 0,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2026-02-10T18:50:29.590000+05:30",
+      "sub_end": null
+    },
+    {
+      "name": "Shashank Singhal",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 0,
+      "sub_days_left": 37,
+      "archived": false,
+      "last_checkin": "2026-02-10T17:37:33.341000+05:30",
+      "sub_end": "2026-03-21T05:30:00+05:30"
+    },
+    {
+      "name": "Harshwardhan Patil",
+      "status": "\ud83d\udfe2 Active",
+      "days_since_checkin": 0,
+      "sub_days_left": null,
+      "archived": false,
+      "last_checkin": "2026-02-10T16:48:06.884000+05:30",
+      "sub_end": null
+    }
+  ],
+  "summary": {
+    "total": 54,
+    "active": 12,
+    "at_risk": 1,
+    "ghosting": 30,
+    "expiring": 0,
+    "archived": 11
+  }
+}

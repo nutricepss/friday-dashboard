@@ -1,0 +1,13 @@
+🔴 Reddit Engagement Update
+
+r/Fitness_India: [1;33m[skill_reddit][0m 16:08:58 Checking r/Fitness_India (limit: 10)...
+[1;33m[skill_reddit][0m 16:09:00 r/Fitness_India: Found 10 posts
+10 new posts
+r/Indianfitness: [1;33m[skill_reddit][0m 16:09:00 Checking r/Indianfitness (limit: 10)...
+[1;33m[skill_reddit][0m 16:09:02 r/Indianfitness: Found 10 posts
+10 new posts
+🎯 
+
+Check analysis: reddit-analysis-20260212-160858.md
+
+Action: Review opportunities and engage where valuable.

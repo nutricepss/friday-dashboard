@@ -1,0 +1,127 @@
+# Multi-Agent Configuration Patch for OpenClaw
+# Add this to openclaw.json agents.list
+
+{
+  "agents": {
+    "list": [
+      {
+        "id": "coder",
+        "model": {
+          "primary": "deepseek/deepseek-coder",
+          "fallbacks": ["anthropic/claude-opus-4", "moonshot/kimi-k2.5", "anthropic/claude-sonnet-4"]
+        },
+        "skills": ["exec", "read", "write", "edit", "web_search", "browser"]
+      },
+      {
+        "id": "content_writinator",
+        "name": "Content Writinator 📝",
+        "model": {
+          "primary": "anthropic/claude-sonnet-4",
+          "fallbacks": ["deepseek/deepseek-chat", "google/gemini-2.0-flash"]
+        },
+        "skills": ["read", "write", "browser", "image", "web_search"],
+        "description": "Instagram content creator. Catchphrase: 'Let's make this VIRAL, baby! 🔥'"
+      },
+      {
+        "id": "data_detective",
+        "name": "Data Detective 🔍",
+        "model": {
+          "primary": "deepseek/deepseek-coder",
+          "fallbacks": ["moonshot/kimi-k2.5", "google/gemini-2.0-pro-exp-02-05"]
+        },
+        "skills": ["web_search", "web_fetch", "browser", "read", "write"],
+        "description": "Reddit/Twitter research analyst. Catchphrase: 'The data never lies... let me dig deeper. 🕵️'"
+      },
+      {
+        "id": "coach_cory",
+        "name": "Coach Cory 📊",
+        "model": {
+          "primary": "moonshot/kimi-k2.5",
+          "fallbacks": ["anthropic/claude-sonnet-4", "deepseek/deepseek-chat"]
+        },
+        "skills": ["read", "write", "exec", "message"],
+        "description": "HubFit client analyst. Catchphrase: 'Your clients need you! Let's get them back on track. 💪'"
+      },
+      {
+        "id": "seo_steve",
+        "name": "SEO Steve 📈",
+        "model": {
+          "primary": "google/gemini-2.0-flash",
+          "fallbacks": ["anthropic/claude-sonnet-4", "deepseek/deepseek-chat"]
+        },
+        "skills": ["read", "write", "browser", "web_search", "web_fetch"],
+        "description": "Growth hacker. Catchphrase: 'CTR is life! Let's optimize EVERYTHING! 📊'"
+      },
+      {
+        "id": "code_ninja",
+        "name": "Code Ninja 🥷",
+        "model": {
+          "primary": "deepseek/deepseek-coder",
+          "fallbacks": ["anthropic/claude-opus-4", "anthropic/claude-sonnet-4", "moonshot/kimi-k2.5"]
+        },
+        "skills": ["exec", "read", "write", "edit", "browser", "web_search"],
+        "description": "Technical wizard. Catchphrase: 'Deploying in 3... 2... 1... SHIP IT! 🚀'"
+      },
+      {
+        "id": "pr_princess",
+        "name": "PR Princess 👑",
+        "model": {
+          "primary": "anthropic/claude-sonnet-4",
+          "fallbacks": ["deepseek/deepseek-chat", "moonshot/kimi-k2.5"]
+        },
+        "skills": ["read", "write", "browser", "image", "web_search"],
+        "description": "Brand buzz builder. Catchphrase: 'Darling, your brand is about to BLOW UP! 💅✨'"
+      },
+      {
+        "id": "friday_manager",
+        "name": "Friday 🤌",
+        "model": {
+          "primary": "moonshot/kimi-k2.5",
+          "fallbacks": ["anthropic/claude-sonnet-4", "deepseek/deepseek-chat", "google/gemini-2.0-flash"]
+        },
+        "skills": ["read", "write", "message", "cron", "sessions_list", "sessions_history", "sessions_send", "sessions_spawn"],
+        "description": "AI Operations Manager. Catchphrase: 'I've got this. Go grab a coffee. ☕'"
+      },
+      {
+        "id": "content_writer",
+        "model": {
+          "primary": "deepseek/deepseek-chat",
+          "fallbacks": ["anthropic/claude-sonnet-4", "google/gemini-2.0-flash"]
+        },
+        "skills": ["read", "write", "browser", "image"]
+      },
+      {
+        "id": "researcher",
+        "model": {
+          "primary": "moonshot/kimi-k2.5",
+          "fallbacks": ["google/gemini-2.0-pro-exp-02-05", "anthropic/claude-sonnet-4"]
+        },
+        "skills": ["web_search", "web_fetch", "browser"]
+      },
+      {
+        "id": "marketing",
+        "model": {
+          "primary": "anthropic/claude-sonnet-4",
+          "fallbacks": ["deepseek/deepseek-chat", "moonshot/kimi-k2.5"]
+        },
+        "skills": ["read", "write", "browser", "seo"]
+      },
+      {
+        "id": "ops",
+        "model": {
+          "primary": "anthropic/claude-haiku-4",
+          "fallbacks": ["google/gemini-2.0-flash"]
+        },
+        "skills": ["read", "gmail", "calendar", "cron", "message"]
+      },
+      {
+        "id": "coordinator",
+        "model": {
+          "primary": "anthropic/claude-sonnet-4",
+          "fallbacks": ["moonshot/kimi-k2.5", "deepseek/deepseek-chat"]
+        },
+        "skills": []
+      }
+    ]
+  }
+}

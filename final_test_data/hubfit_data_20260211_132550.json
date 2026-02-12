@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-02-11T13:25:50.095239+05:30",
+  "data": [
+    {
+      "name": "Test Client",
+      "status": "\u23f0 Expiring Soon",
+      "days_since_checkin": 9,
+      "sub_days_left": 8,
+      "archived": false,
+      "last_checkin": "2026-02-01T15:30:00+05:30",
+      "sub_end": "2026-02-20T05:30:00+05:30"
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "active": 0,
+    "at_risk": 0,
+    "ghosting": 0,
+    "expiring": 1,
+    "archived": 0
+  }
+}
