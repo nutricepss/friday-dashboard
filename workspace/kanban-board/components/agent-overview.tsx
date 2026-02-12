@@ -22,6 +22,13 @@ export function AgentOverview() {
     return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
   }
 
+  // Since we don't have access to tasks in this component, we'll use placeholder data
+  // In a real implementation, this would come from props or context
+  const agentStats = AGENTS.map(agent => ({
+    ...agent,
+    activeTasks: 0 // Placeholder - would be calculated from actual tasks
+  }));
+
   return (
     <div className="rounded-lg border bg-card p-6">
       <div className="mb-4 flex items-center gap-2">
@@ -30,7 +37,7 @@ export function AgentOverview() {
       </div>
       
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {AGENTS.map(agent => (
+        {agentStats.map(agent => (
           <div
             key={agent.id}
             className="rounded-lg border p-4 hover:bg-accent/50 transition-colors"
@@ -78,7 +85,7 @@ export function AgentOverview() {
             </p>
           </div>
           <div className="text-2xl font-bold">
-            {AGENTS.reduce((sum, agent) => sum + agent.activeTasks, 0)}
+            {agentStats.reduce((sum, agent) => sum + agent.activeTasks, 0)}
           </div>
         </div>
       </div>

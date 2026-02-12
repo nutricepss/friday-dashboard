@@ -27,10 +27,10 @@ export function SortableTask({ task, onEdit, onDelete }: SortableTaskProps) {
     transition,
   };
 
-  const agent = AGENTS.find((a) => a.id === task.assignee);
+  const agent = AGENTS.find((a) => a.id === task.agent);
   const priority = PRIORITIES.find((p) => p.id === task.priority);
-  const dueDate = new Date(task.dueDate);
-  const isOverdue = dueDate < new Date() && task.columnId !== 'done';
+  const dueDate = task.dueDate ? new Date(task.dueDate) : null;
+  const isOverdue = dueDate && dueDate < new Date() && task.status !== 'done';
 
   return (
     <div
@@ -79,7 +79,7 @@ export function SortableTask({ task, onEdit, onDelete }: SortableTaskProps) {
         <div className="flex items-center">
           <Calendar size={12} className="mr-1" />
           <span className={isOverdue ? 'text-red-500 font-medium' : ''}>
-            {format(dueDate, 'MMM d')}
+            {dueDate ? format(dueDate, 'MMM d') : 'No due date'}
             {isOverdue && ' ⚠️'}
           </span>
         </div>

@@ -48,7 +48,7 @@ export function DndProvider({ children, board, onBoardChange }: DndProviderProps
     // If dragging over a column
     if (Object.keys(board.columns).includes(overId)) {
       const newColumnId = overId as ColumnId;
-      const oldColumnId = board.tasks[activeId]?.columnId;
+      const oldColumnId = board.tasks[activeId]?.status;
 
       if (oldColumnId && oldColumnId !== newColumnId) {
         const newBoard = { ...board };
@@ -61,11 +61,11 @@ export function DndProvider({ children, board, onBoardChange }: DndProviderProps
         // Add to new column at the end
         newBoard.columns[newColumnId].taskIds.push(activeId);
         
-        // Update task column
+        // Update task status
         newBoard.tasks[activeId] = {
           ...newBoard.tasks[activeId],
-          columnId: newColumnId,
-          updatedAt: new Date().toISOString().split('T')[0],
+          status: newColumnId,
+          updatedAt: new Date(),
         };
 
         onBoardChange(newBoard);

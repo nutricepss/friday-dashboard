@@ -17,7 +17,7 @@ export function TaskFormModal({
   isOpen,
   onClose,
   onSubmit,
-  initialColumnId = 'backlog',
+  initialColumnId = 'todo',
   initialTask = null,
 }: TaskFormModalProps) {
   const [title, setTitle] = useState('');
@@ -32,10 +32,10 @@ export function TaskFormModal({
     if (initialTask) {
       setTitle(initialTask.title);
       setDescription(initialTask.description);
-      setAssignee(initialTask.assignee);
+      setAssignee(initialTask.agent);
       setPriority(initialTask.priority);
-      setDueDate(initialTask.dueDate);
-      setColumnId(initialTask.columnId);
+      setDueDate(initialTask.dueDate ? format(initialTask.dueDate, 'yyyy-MM-dd') : '');
+      setColumnId(initialTask.status);
     } else {
       // Set default due date to tomorrow
       const tomorrow = new Date();
@@ -76,10 +76,12 @@ export function TaskFormModal({
     const taskData = {
       title: title.trim(),
       description: description.trim(),
-      assignee,
+      agent: assignee,
+      model: 'deepseek-coder' as const,
+      frequency: 'one-time' as const,
       priority,
-      dueDate,
-      columnId,
+      dueDate: dueDate ? new Date(dueDate) : undefined,
+      status: columnId,
     };
 
     onSubmit(taskData);

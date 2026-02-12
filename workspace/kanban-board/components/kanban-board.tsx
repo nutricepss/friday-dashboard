@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Task, TaskStatus, INITIAL_TASKS } from '@/lib/types'
+import { Task, TaskStatus, INITIAL_TASKS, ModelType } from '@/lib/types'
 import { KanbanColumn } from './kanban-column'
 import { TaskCard } from './task-card'
 import { Plus, ListTodo, Grid3x3 } from 'lucide-react'
@@ -205,14 +205,14 @@ function AddTaskForm({ onAdd, onCancel }: {
   onAdd: (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => void
   onCancel: () => void 
 }) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Omit<Task, 'id' | 'createdAt' | 'updatedAt'>>({
     title: '',
     description: '',
-    agent: 'coder' as const,
+    agent: 'coder',
     model: 'deepseek-coder',
-    frequency: 'one-time' as const,
-    priority: 'medium' as const,
-    status: 'todo' as const,
+    frequency: 'one-time',
+    priority: 'medium',
+    status: 'todo',
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -254,13 +254,20 @@ function AddTaskForm({ onAdd, onCancel }: {
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Model</label>
-            <input
-              type="text"
+            <select
               value={formData.model}
-              onChange={e => setFormData({ ...formData, model: e.target.value })}
+              onChange={e => setFormData({ ...formData, model: e.target.value as ModelType })}
               className="w-full rounded-md border px-3 py-2 text-sm"
-              placeholder="e.g., deepseek-coder"
-            />
+            >
+              <option value="deepseek-coder">deepseek-coder</option>
+              <option value="kimi">kimi</option>
+              <option value="sonnet">sonnet</option>
+              <option value="opus">opus</option>
+              <option value="flash">flash</option>
+              <option value="gemini-pro">gemini-pro</option>
+              <option value="haiku">haiku</option>
+              <option value="local">local</option>
+            </select>
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Frequency</label>
