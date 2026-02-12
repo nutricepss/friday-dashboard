@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friday Dashboard - NutriCepss</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤌 Friday Dashboard</h1>
+            <p>NutriCepss Operations Center</p>
+            <div class="last-updated">Last updated: <span id="last-updated">Loading...</span></div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="hubfit">📊 HubFit</button>
+            <button class="tab-btn" data-tab="reddit">🔴 Reddit</button>
+            <button class="tab-btn" data-tab="system">⚙️ System</button>
+            <button class="tab-btn" data-tab="instagram">📸 Instagram</button>
+        </nav>
+
+        <!-- HubFit Tab -->
+        <div id="hubfit" class="tab-content active">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h2>Client Status Overview</h2>
+                    <canvas id="hubfit-chart"></canvas>
+                    <div class="stats-grid">
+                        <div class="stat-item active">
+                            <span class="stat-value" id="hubfit-active">-</span>
+                            <span class="stat-label">Active</span>
+                        </div>
+                        <div class="stat-item at-risk">
+                            <span class="stat-value" id="hubfit-atrisk">-</span>
+                            <span class="stat-label">At Risk</span>
+                        </div>
+                        <div class="stat-item ghosting">
+                            <span class="stat-value" id="hubfit-ghosting">-</span>
+                            <span class="stat-label">Ghosting</span>
+                        </div>
+                        <div class="stat-item archived">
+                            <span class="stat-value" id="hubfit-archived">-</span>
+                            <span class="stat-label">Archived</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card urgent">
+                    <h2>⚠️ Urgent Follow-ups</h2>
+                    <div id="hubfit-urgent">
+                        <p>Loading urgent alerts...</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Top Ghosting Clients</h2>
+                    <div id="hubfit-top-ghosting">
+                        <p>Loading data...</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Engagement Rate</h2>
+                    <div class="big-stat">
+                        <span class="big-value" id="hubfit-engagement">-</span>
+                        <span class="big-label">% Active</span>
+                    </div>
+                    <p class="target">Target: 40%+</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reddit Tab -->
+        <div id="reddit" class="tab-content">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h2>Today's Activity</h2>
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <span class="stat-value" id="reddit-fitness">-</span>
+                            <span class="stat-label">r/Fitness_India</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-value" id="reddit-indian">-</span>
+                            <span class="stat-label">r/Indianfitness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card wide">
+                    <h2>🎯 Engagement Opportunities</h2>
+                    <div id="reddit-opportunities">
+                        <p>Loading opportunities...</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Post Categories</h2>
+                    <canvas id="reddit-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Tab -->
+        <div id="system" class="tab-content">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h2>Cron Job Status</h2>
+                    <div id="cron-status">
+                        <div class="cron-item">
+                            <span class="cron-name">HubFit Report</span>
+                            <span class="cron-time">4:00 AM, 4:00 PM</span>
+                            <span class="cron-status ok">✅ Active</span>
+                        </div>
+                        <div class="cron-item">
+                            <span class="cron-name">Email Maintenance</span>
+                            <span class="cron-time">8:00 AM</span>
+                            <span class="cron-status ok">✅ Active</span>
+                        </div>
+                        <div class="cron-item">
+                            <span class="cron-name">Calendar Check</span>
+                            <span class="cron-time">9:00 AM</span>
+                            <span class="cron-status ok">✅ Active</span>
+                        </div>
+                        <div class="cron-item">
+                            <span class="cron-name">Reddit Monitoring</span>
+                            <span class="cron-time">Every 2 hours</span>
+                            <span class="cron-status ok">✅ Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Recent Executions</h2>
+                    <div id="recent-executions">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>System Health</h2>
+                    <div class="health-metrics">
+                        <div class="health-item">
+                            <span class="health-label">API Status</span>
+                            <span class="health-value ok">✅ All Good</span>
+                        </div>
+                        <div class="health-item">
+                            <span class="health-label">Disk Usage</span>
+                            <span class="health-value" id="disk-usage">-</span>
+                        </div>
+                        <div class="health-item">
+                            <span class="health-label">Last Backup</span>
+                            <span class="health-value">Today</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instagram Tab -->
+        <div id="instagram" class="tab-content">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h2>Account Overview</h2>
+                    <div class="account-info">
+                        <div class="account-stat">
+                            <span class="stat-value" id="ig-posts">93</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                        <div class="account-stat">
+                            <span class="stat-value" id="ig-username">nutricepssbyhimanshu</span>
+                            <span class="stat-label">Username</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card wide">
+                    <h2>📸 Content Ideas</h2>
+                    <div id="content-ideas">
+                        <div class="idea-card">
+                            <h3>Trending: Supplement Simplification</h3>
+                            <p>Create reel: "Stop buying 10 supplements. You only need 3."</p>
+                            <span class="trend-tag">🔥 Hot</span>
+                        </div>
+                        <div class="idea-card">
+                            <h3>Q&A: Bulk or Cut?</h3>
+                            <p>Address common confusion with visual examples</p>
+                            <span class="trend-tag">📈 Rising</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Hashtag Strategy</h2>
+                    <div class="hashtags">
+                        <span class="hashtag primary">#fitnessindia</span>
+                        <span class="hashtag primary">#indianfitness</span>
+                        <span class="hashtag secondary">#workout</span>
+                        <span class="hashtag secondary">#nutrition</span>
+                        <span class="hashtag niche">#supplements</span>
+                        <span class="hashtag niche">#protein</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Friday Dashboard v1.0 | NutriCepss Operations</p>
+        </footer>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

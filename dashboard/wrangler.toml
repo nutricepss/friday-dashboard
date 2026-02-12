@@ -1,0 +1,9 @@
+
+name = "friday-dashboard"
+
+main = "api/worker.js"
+
+compatibility_date = "2024-02-12"
+
+[vars]
+ENVIRONMENT = "production"

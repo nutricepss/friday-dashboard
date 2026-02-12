@@ -1,0 +1,121 @@
+{
+  "version": "1.0",
+  "system": "NutriCepss AI Squad - Task Delegation & Communication",
+  
+  "agents": {
+    "friday": {
+      "id": "friday_manager",
+      "name": "Friday",
+      "emoji": "🤌",
+      "role": "Manager/Coordinator",
+      "reports_to": "himanshu",
+      "can_delegate_to": ["all"]
+    },
+    "content_writinator": {
+      "id": "content_writinator",
+      "name": "Content Writinator",
+      "emoji": "📝",
+      "role": "Instagram Content Creator",
+      "specialty": "Reel scripts, captions, viral content",
+      "model": "claude-sonnet-4",
+      "heartbeat": "daily_9am",
+      "reports_to": "friday"
+    },
+    "data_detective": {
+      "id": "data_detective",
+      "name": "Data Detective",
+      "emoji": "🔍",
+      "role": "Research Analyst",
+      "specialty": "Reddit/Twitter monitoring, lead generation",
+      "model": "deepseek-coder",
+      "heartbeat": "every_2_hours",
+      "reports_to": "friday"
+    },
+    "coach_cory": {
+      "id": "coach_cory",
+      "name": "Coach Cory",
+      "emoji": "📊",
+      "role": "Client Success Analyst",
+      "specialty": "HubFit analysis, client retention",
+      "model": "kimi-k2.5",
+      "heartbeat": "daily_4am_4pm",
+      "reports_to": "friday"
+    },
+    "seo_steve": {
+      "id": "seo_steve",
+      "name": "SEO Steve",
+      "emoji": "📈",
+      "role": "Growth Hacker",
+      "specialty": "SEO, trends, keywords",
+      "model": "gemini-flash",
+      "heartbeat": "weekly_monday",
+      "reports_to": "friday"
+    },
+    "code_ninja": {
+      "id": "code_ninja",
+      "name": "Code Ninja",
+      "emoji": "🥷",
+      "role": "Technical Developer",
+      "specialty": "Websites, dashboards, Shopify",
+      "model": "deepseek-coder",
+      "heartbeat": "on_demand",
+      "reports_to": "friday"
+    },
+    "pr_princess": {
+      "id": "pr_princess",
+      "name": "PR Princess",
+      "emoji": "👑",
+      "role": "Brand Buzz Builder",
+      "specialty": "UGC ads, PR, influencer outreach",
+      "model": "claude-sonnet-4",
+      "heartbeat": "weekly_creative",
+      "reports_to": "friday"
+    }
+  },
+  
+  "communication_rules": {
+    "delegation": {
+      "format": "@agent_name task_description [deadline]",
+      "example": "@content_writinator Create Instagram reel about protein myths. Hook: 'Stop wasting money on these 3 supplements'. Include CTA. Due: 6 PM today",
+      "response_required": true,
+      "response_format": "Acknowledgment + ETA + Questions if any"
+    },
+    
+    "reporting": {
+      "agent_to_friday": {
+        "format": "Task complete: [summary] + deliverables",
+        "include": "Files created, links, key insights"
+      },
+      "friday_to_himanshu": {
+        "format": "Executive summary of all agent work",
+        "include": "Highlights, urgent items, next actions"
+      }
+    },
+    
+    "group_chat": {
+      "visibility": "himanshu can observe all",
+      "style": "fun, sitcom personalities, banter allowed",
+      "rules": [
+        "Use emojis and catchphrases",
+        "Celebrate wins together",
+        "Help each other out",
+        "Keep it professional but fun"
+      ]
+    }
+  },
+  
+  "task_status": {
+    "backlog": "Not started",
+    "todo": "Ready to start",
+    "in_progress": "Agent working on it",
+    "review": "Ready for Friday review",
+    "done": "Complete and delivered"
+  },
+  
+  "file_structure": {
+    "tasks": "/mnt/data/tasks/",
+    "deliverables": "/mnt/data/deliverables/",
+    "chat_logs": "/mnt/data/chat_logs/",
+    "reports": "/mnt/data/reports/"
+  }
+}

@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+"""HubFit Client Adherence Dashboard — generates markdown report."""
+import argparse, json, sys, os
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
+
+sys.path.insert(0, os.path.dirname(__file__))
+from hubfit_client import HubFitClient
+
+TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODRhOWMyMzQ1ZjM3ZjVhOGUxNDU0YTgiLCJmdWxsTmFtZSI6IkhpbWFuc2h1IFNoYXJtYSIsInVzdGF0dXMiOiJub3JtYWwiLCJ3b3Jrc3BhY2VJZCI6IjY4NGE5YzIzNDVmMzdmNWE4ZTE0NTRhOCIsImlzc3VlZEF0IjoxNzcwNzA1OTQ4NDI5LCJpYXQiOjE3NzA3MDU5NDgsImV4cCI6MTgwMjI0MTk0OH0.bwZ0C4nwHIr4s7us3-JIsDnwHIldTqhOHj8noJ-sZZs"
+IST = timezone(timedelta(hours=5, minutes=30))
+NOW = datetime.now(IST)
+
+def parse_ts(val):
+    """Parse various timestamp formats to datetime."""
+    if not val:
+        return None
+    if isinstance(val, (int, float)):
+        # ms epoch
+        if val > 1e12:
+            val = val / 1000
+        return datetime.fromtimestamp(val, tz=timezone.utc).astimezone(IST)
+    if isinstance(val, str):
+        for fmt in ("%Y-%m-%dT%H:%M:%S.%fZ", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d"):
+            try:
+                return datetime.strptime(val, fmt).replace(tzinfo=timezone.utc).astimezone(IST)
+            except ValueError:
+                continue
+    return None
+
+def days_since(dt):
+    if not dt:
+        return None
+    return (NOW - dt).days
+
+def categorize(client_row):
+    if client_row["archived"]:
+        return "💤 Archived"
+    if client_row["sub_days_left"] is not None and 0 < client_row["sub_days_left"] <= 14:
+        return "⏰ Expiring Soon"
+    d = client_row["days_since_checkin"]
+    if d is None:
+        return "🔴 Ghosting"
+    if d <= 3:
+        return "🟢 Active"
+    if d <= 7:
+        return "🟡 At Risk"
+    return "🔴 Ghosting"
+
+def fmt_date(dt):
+    return dt.strftime("%d %b %Y") if dt else "—"
+
+def fmt_days(d):
+    return str(d) if d is not None else "—"
+
+def main():
+    parser = argparse.ArgumentParser(description="HubFit Adherence Dashboard")
+    parser.add_argument("--output", "-o", help="Output markdown file path")
+    parser.add_argument("--token", default=TOKEN, help="JWT token")
+    args = parser.parse_args()
+
+    client = HubFitClient(args.token)
+
+    print("Fetching clients...")
+    clients = client.get_clients()
+    print(f"  → {len(clients)} clients found")
+
+    rows = []
+    for i, c in enumerate(clients):
+        cid = c.get("_id") or c.get("id") or c.get("clientId", "")
+        name = c.get("fullName") or c.get("name") or c.get("email", "Unknown")
+        archived = c.get("archived", False) or c.get("isArchived", False)
+        last_checkin = parse_ts(c.get("lastCheckinTime") or c.get("lastCheckin"))
+        last_active = parse_ts(c.get("lastActive") or c.get("lastActiveTime"))
+        start = parse_ts(c.get("startDate"))
+        end = parse_ts(c.get("endDate"))
+        sub_left = (end - NOW).days if end and end > NOW else (0 if end else None)
+
+        # Fetch programs & plans
+        programs = client.get_training_programs(cid) if cid else []
+        plans = client.get_nutrition_plan(cid) if cid else []
+
+        prog_names = []
+        for p in programs[:3]:
+            n = p.get("name") or p.get("programName") or p.get("title", "")
+            if n:
+                prog_names.append(n)
+        plan_names = []
+        for p in plans[:3]:
+            n = p.get("name") or p.get("planName") or p.get("title", "")
+            if n:
+                plan_names.append(n)
+
+        has_program = "✅" if programs else "❌"
+        has_plan = "✅" if plans else "❌"
+        plan_detail = f"W:{has_program} M:{has_plan}"
+
+        row = {
+            "name": name,
+            "archived": archived,
+            "last_checkin": last_checkin,
+            "last_active": last_active,
+            "days_since_checkin": days_since(last_checkin),
+            "days_since_active": days_since(last_active),
+            "sub_end": end,
+            "sub_days_left": sub_left,
+            "plan_detail": plan_detail,
+            "prog_names": ", ".join(prog_names) if prog_names else "—",
+            "plan_names": ", ".join(plan_names) if plan_names else "—",
+        }
+        row["status"] = categorize(row)
+        rows.append(row)
+
+        if (i + 1) % 10 == 0:
+            print(f"  Processed {i+1}/{len(clients)}...")
+
+    # Sort: most overdue first (None = infinity)
+    rows.sort(key=lambda r: (0 if r["archived"] else 1, -(r["days_since_checkin"] if r["days_since_checkin"] is not None else 9999)))
+
+    # Stats
+    counts = {}
+    for r in rows:
+        s = r["status"]
+        counts[s] = counts.get(s, 0) + 1
+
+    active = counts.get("🟢 Active", 0)
+    at_risk = counts.get("🟡 At Risk", 0)
+    ghosting = counts.get("🔴 Ghosting", 0)
+    expiring = counts.get("⏰ Expiring Soon", 0)
+    archived = counts.get("💤 Archived", 0)
+
+    # Build report
+    date_str = NOW.strftime("%Y-%m-%d")
+    lines = [
+        f"# HubFit Client Adherence Dashboard",
+        f"**Generated:** {NOW.strftime('%d %b %Y, %I:%M %p IST')}",
+        "",
+        "## Summary",
+        f"| Metric | Count |",
+        f"|--------|-------|",
+        f"| 🟢 Active (≤3 days) | {active} |",
+        f"| 🟡 At Risk (4-7 days) | {at_risk} |",
+        f"| 🔴 Ghosting (>7 days) | {ghosting} |",
+        f"| ⏰ Expiring Soon (<14d) | {expiring} |",
+        f"| 💤 Archived | {archived} |",
+        f"| **Total** | **{len(rows)}** |",
+        "",
+        "## Client Details",
+        "",
+        "| # | Name | Last Check-in | Last Active | Days Since | Status | Plans | Sub Ends |",
+        "|---|------|--------------|-------------|------------|--------|-------|----------|",
+    ]
+
+    for i, r in enumerate(rows, 1):
+        lines.append(
+            f"| {i} | {r['name']} | {fmt_date(r['last_checkin'])} | {fmt_date(r['last_active'])} "
+            f"| {fmt_days(r['days_since_checkin'])} | {r['status']} | {r['plan_detail']} | {fmt_date(r['sub_end'])} |"
+        )
+
+    lines += ["", "---", f"*Report generated by hubfit_dashboard.py*"]
+    report = "\n".join(lines)
+
+    # Output
+    out_path = args.output or str(Path(__file__).parent.parent / "reports" / f"hubfit-adherence-{date_str}.md")
+    Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(out_path).write_text(report)
+
+    print(f"\n{'='*50}")
+    print(f"HUBFIT ADHERENCE REPORT — {date_str}")
+    print(f"{'='*50}")
+    print(f"🟢 Active: {active}  🟡 At Risk: {at_risk}  🔴 Ghosting: {ghosting}")
+    print(f"⏰ Expiring: {expiring}  💤 Archived: {archived}  Total: {len(rows)}")
+    print(f"Report saved: {out_path}")
+
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

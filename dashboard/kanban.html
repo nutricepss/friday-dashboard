@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriCepss AI Squad Dashboard</title>
+    <link rel="stylesheet" href="css/kanban.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="logo">
+                <span class="logo-icon">🤌</span>
+                <h1>Friday Command Center</h1>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-value" id="active-tasks">0</span>
+                    <span class="stat-label">Active</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="completed-today">0</span>
+                    <span class="stat-label">Done Today</span>
+                </div>
+                <div class="stat-item urgent">
+                    <span class="stat-value" id="urgent-items">0</span>
+                    <span class="stat-label">Urgent</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar - Agent Roster -->
+            <aside class="sidebar">
+                <h2>🎮 AI Squad</h2>
+                <div class="agent-list">
+                    <div class="agent-card" data-agent="friday">
+                        <div class="agent-avatar friday">🤌</div>
+                        <div class="agent-info">
+                            <span class="agent-name">Friday</span>
+                            <span class="agent-role">Manager</span>
+                            <span class="agent-status online">● Online</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card" data-agent="content_writinator">
+                        <div class="agent-avatar content">📝</div>
+                        <div class="agent-info">
+                            <span class="agent-name">Writinator</span>
+                            <span class="agent-role">Content</span>
+                            <span class="agent-status online">● Online</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card" data-agent="data_detective">
+                        <div class="agent-avatar detective">🔍</div>
+                        <div class="agent-info">
+                            <span class="agent-name">Detective</span>
+                            <span class="agent-role">Research</span>
+                            <span class="agent-status online">● Online</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card" data-agent="coach_cory">
+                        <div class="agent-avatar coach">📊</div>
+                        <div class="agent-info">
+                            <span class="agent-name">Coach Cory</span>
+                            <span class="agent-role">HubFit</span>
+                            <span class="agent-status online">● Online</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card" data-agent="seo_steve">
+                        <div class="agent-avatar seo">📈</div>
+                        <div class="agent-info">
+                            <span class="agent-name">SEO Steve</span>
+                            <span class="agent-role">Growth</span>
+                            <span class="agent-status busy">● Busy</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card" data-agent="code_ninja">
+                        <div class="agent-avatar ninja">🥷</div>
+                        <div class="agent-info">
+                            <span class="agent-name">Code Ninja</span>
+                            <span class="agent-role">Dev</span>
+                            <span class="agent-status online">● Online</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card" data-agent="pr_princess">
+                        <div class="agent-avatar pr">👑</div>
+                        <div class="agent-info">
+                            <span class="agent-name">PR Princess</span>
+                            <span class="agent-role">Marketing</span>
+                            <span class="agent-status away">● Away</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>⚡ Quick Actions</h3>
+                    <button class="action-btn" onclick="createTask()">+ New Task</button>
+                    <button class="action-btn secondary" onclick="viewChat()">💬 Squad Chat</button>
+                    <button class="action-btn secondary" onclick="viewReports()">📊 Reports</button>
+                </div>
+            </aside>
+
+            <!-- Main Content - Kanban Board -->
+            <main class="kanban-board">
+                <div class="board-header">
+                    <h2>📋 Task Board</h2>
+                    <div class="board-filters">
+                        <select id="filter-agent">
+                            <option value="all">All Agents</option>
+                            <option value="content_writinator">📝 Writinator</option>
+                            <option value="data_detective">🔍 Detective</option>
+                            <option value="coach_cory">📊 Coach</option>
+                            <option value="seo_steve">📈 SEO</option>
+                            <option value="code_ninja">🥷 Ninja</option>
+                            <option value="pr_princess">👑 PR</option>
+                        </select>
+                        <select id="filter-priority">
+                            <option value="all">All Priorities</option>
+                            <option value="urgent">🔥 Urgent</option>
+                            <option value="high">⚡ High</option>
+                            <option value="normal">📋 Normal</option>
+                            <option value="low">💤 Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="kanban-columns">
+                    <!-- Backlog Column -->
+                    <div class="kanban-column" data-status="backlog">
+                        <div class="column-header">
+                            <span class="column-title">📥 Backlog</span>
+                            <span class="column-count">0</span>
+                        </div>
+                        <div class="column-content" id="backlog-tasks">
+                            <!-- Tasks will be loaded here -->
+                        </div>
+                        <button class="add-task-btn" onclick="addTaskToColumn('backlog')">+ Add Task</button>
+                    </div>
+
+                    <!-- To Do Column -->
+                    <div class="kanban-column" data-status="todo">
+                        <div class="column-header">
+                            <span class="column-title">📝 To Do</span>
+                            <span class="column-count">0</span>
+                        </div>
+                        <div class="column-content" id="todo-tasks">
+                            <!-- Tasks will be loaded here -->
+                        </div>
+                        <button class="add-task-btn" onclick="addTaskToColumn('todo')">+ Add Task</button>
+                    </div>
+
+                    <!-- In Progress Column -->
+                    <div class="kanban-column" data-status="in-progress">
+                        <div class="column-header">
+                            <span class="column-title">🔄 In Progress</span>
+                            <span class="column-count">0</span>
+                        </div>
+                        <div class="column-content" id="inprogress-tasks">
+                            <!-- Tasks will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Review Column -->
+                    <div class="kanban-column" data-status="review">
+                        <div class="column-header">
+                            <span class="column-title">👀 Review</span>
+                            <span class="column-count">0</span>
+                        </div>
+                        <div class="column-content" id="review-tasks">
+                            <!-- Tasks will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Done Column -->
+                    <div class="kanban-column" data-status="done">
+                        <div class="column-header">
+                            <span class="column-title">✅ Done</span>
+                            <span class="column-count">0</span>
+                        </div>
+                        <div class="column-content" id="done-tasks">
+                            <!-- Tasks will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Panel - Squad Chat -->
+            <aside class="chat-panel">
+                <div class="chat-header">
+                    <h2>💬 Squad Chat</h2>
+                    <button class="toggle-chat" onclick="toggleChat()">−</button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Chat messages loaded here -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleChatKeypress(event)">
+                    <button onclick="sendChatMessage()">➤</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- New Task Modal -->
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✨ New Task</h3>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Task Title</label>
+                    <input type="text" id="task-title" placeholder="What needs to be done?">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="task-description" rows="3" placeholder="Add details..."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Assign To</label>
+                        <select id="task-agent">
+                            <option value="">Select Agent...</option>
+                            <option value="content_writinator">📝 Content Writinator</option>
+                            <option value="data_detective">🔍 Data Detective</option>
+                            <option value="coach_cory">📊 Coach Cory</option>
+                            <option value="seo_steve">📈 SEO Steve</option>
+                            <option value="code_ninja">🥷 Code Ninja</option>
+                            <option value="pr_princess">👑 PR Princess</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select id="task-priority">
+                            <option value="normal">📋 Normal</option>
+                            <option value="low">💤 Low</option>
+                            <option value="high">⚡ High</option>
+                            <option value="urgent">🔥 Urgent</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Deadline</label>
+                    <input type="text" id="task-deadline" placeholder="e.g., 6 PM today">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveTask()">Create Task</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/kanban.js"></script>
+</body>
+</html>
